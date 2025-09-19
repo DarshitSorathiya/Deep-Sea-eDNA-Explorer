@@ -17,14 +17,30 @@
     --popover: 0 0% 4%;
     --popover-foreground: 0 0% 98%;
 
-    /* Sea blue gradient primary colors */
-    --primary: 200 100% 50%;
-    --primary-foreground: 0 0% 98%;
-    --primary-glow: 200 100% 60%;
+/* Default badge: dark gray background, white text */
+.badge-default {
+  @apply bg-gray-200/20 text-white px-2 py-1 rounded;
+}
 
-    /* Transparent secondary with subtle borders */
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 98%;
+/* Secondary badge: deep sea blue background, light blue text */
+.badge-secondary {
+  @apply bg-[hsl(121,85%,29%)] text-[hsl(210_100%_85%)] px-2 py-1 rounded;
+}
+
+
+/* Primary: Sea Blue Gradient */
+--primary: 200 100% 50%;
+--primary-foreground: 0 0% 98%;
+
+/* Secondary: Deep Sea Blue */
+--secondary: 210 50% 20%;           /* Dark rich blue background */
+--secondary-foreground: 210 100% 85%; /* Light blue text for contrast */
+
+/* Default button / badge color */
+--default: 0 0% 15%;                /* Dark gray background */
+--default-foreground: 0 0% 98%;     /* White text */
+
+
 
     /* Muted grays for subtle elements */
     --muted: 0 0% 8%;
