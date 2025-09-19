@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+/* BioDNA Scientific App Design System - Dark Theme with Yellow Gradients */
+
+@layer base {
+:root {
+    /* Pure dark theme colors */
+    --background: 0 0% 0%;
+    --background-secondary: 0 0% 4%;
+    --foreground:0 0% 98%;
+
+    /* Glass/transparent card backgrounds */
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --card-glass: 0 0% 8%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Sea blue gradient primary colors */
+    --primary: 200 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 200 100% 60%;
+
+    /* Transparent secondary with subtle borders */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted grays for subtle elements */
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 60%;
+
+    /* Accent sea blue for highlights */
+    --accent: 200 100% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Transparent borders */
+    --border: 0 0% 20%;
+    --border-glass: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 200 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients */
+    --gradient-sea: linear-gradient(135deg, hsl(200 100% 50%), hsl(210 100% 60%));
+    --gradient-sea-subtle: linear-gradient(135deg, hsl(200 100% 50% / 0.2), hsl(210 100% 60% / 0.1));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 8% / 0.8), hsl(0 0% 4% / 0.6));
+    
+    /* Shadows and glows */
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --shadow-sea-glow: 0 0 40px hsl(200 100% 50% / 0.3);
+    --shadow-hover: 0 10px 40px hsl(0 0% 0% / 0.6);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar colors for dark theme */
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 200 100% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 200 100% 50%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass card component */
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border-glass));
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Transparent button variants */
+  .btn-transparent {
+    background: transparent;
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+    transition: var(--transition-smooth);
+  }
+
+  .btn-transparent:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-sea-glow);
+    border-color: hsl(var(--primary));
+  }
+
+  /* Sea gradient text */
+  .text-gradient-sea {
+    background: var(--gradient-sea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Handwritten underline effect */
+  .handwritten-underline {
+    position: relative;
+  }
+
+  .handwritten-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-sea);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underline-draw 1.5s ease-out 0.5s forwards;
+  }
+
+  /* Navbar blur */
+  .navbar-blur {
+    backdrop-filter: blur(20px);
+    background: hsl(var(--background) / 0.8);
+    border-bottom: 1px solid hsl(var(--border-glass));
+  }
+
+  /* Hover glow effect */
+  .hover-glow {
+    transition: var(--transition-glow);
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-sea-glow);
+  }
+
+  /* Fade in animation */
+  .fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .fade-in-delay {
+    animation: fade-in 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  /* Custom keyframes */
+  @keyframes underline-draw {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(200 100% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(200 100% 50% / 0.6);
+    }
+  }
+
+  /* DNA helix animation */
+  @keyframes dna-spin {
+    from {
+      transform: rotate(0deg) scaleY(1);
+    }
+    to {
+      transform: rotate(360deg) scaleY(1.1);
+    }
+  }
+
+  .animate-dna {
+    animation: dna-spin 4s linear infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  /* Custom color utilities */
+  .text-gradient-sea {
+    background: var(--gradient-sea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-sea {
+    background: var(--gradient-sea);
+  }
+
+  .bg-gradient-sea-subtle {
+    background: var(--gradient-sea-subtle);
+  }
+
+  .bg-gradient-glass {
+    background: var(--gradient-glass);
+  }
+
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border-glass));
+    box-shadow: var(--shadow-glass);
+  }
+
+  .navbar-blur {
+    backdrop-filter: blur(20px);
+    background: hsl(var(--background) / 0.8);
+    border-bottom: 1px solid hsl(var(--border-glass));
+  }
+
+  .hover-glow {
+    transition: var(--transition-glow);
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-sea-glow);
+  }
+
+  .fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .fade-in-delay {
+    animation: fade-in 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .handwritten-underline {
+    position: relative;
+  }
+
+  .handwritten-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-sea);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underline-draw 1.5s ease-out 0.5s forwards;
+  }
+}
